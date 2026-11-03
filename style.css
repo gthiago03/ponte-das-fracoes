@@ -35,11 +35,11 @@ body {
 }
 
 /* Cenários das Telas */
-#tela1 { background-image: url('assets/imagens/cenario_menu.png'); }
-#tela2 { background-image: url('assets/imagens/cenario_tutorial.png'); }
-#tela3.fase-iguais { background-image: url('assets/imagens/cenario_fase_iguais.png'); }
-#tela3.fase-diferentes { background-image: url('assets/imagens/cenario_fase_dif.png'); }
-#tela4 { background-image: url('assets/imagens/cenario_vitoria.png'); }
+#tela1 { background-image: url('assets/imagens/tela1.jpg'); }
+#tela2 { background-image: url('assets/imagens/tela2.png'); }
+#tela3.fase-iguais { background-image: url('assets/imagens/tela3.jpg'); }
+#tela3.fase-diferentes { background-image: url('assets/imagens/tela4.jpg'); }
+#tela4 { background-image: url('assets/imagens/tela5.png'); }
 
 /* Botões Estilizados */
 .btn-principal {
