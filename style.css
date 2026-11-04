@@ -5,16 +5,23 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Atualize o início do arquivo style.css com estas regras: */
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Impede barras de rolagem no celular */
+  touch-action: manipulation; /* Evita zooms acidentais no toque */
+}
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   background-color: #0d0e15;
   color: #fff;
 }
 
-/* CONTAINER DA TELA FIXA 800x600 px (PROPORÇÃO 4:3) */
+/* Adicione flex-shrink e transform-origin na regra da .tela */
 .tela {
   display: none;
   width: 800px;
@@ -26,6 +33,8 @@ body {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 12px 35px rgba(0,0,0,0.85);
+  flex-shrink: 0;
+  transform-origin: center center; /* Garante que a escala mantenha o centro */
 }
 
 .tela.ativa {
