@@ -458,3 +458,23 @@ function atualizarHUD() {
   if (txtVidas) txtVidas.innerText = '❤️ '.repeat(vidas);
   if (txtPontos) txtPontos.innerText = `Pontos: ${pontos}`;
 }
+
+// AJUSTE AUTOMÁTICO DE ESCALA PARA DISPOSITIVOS MÓVEIS
+function ajustarEscalaJogo() {
+  const larguraDispositivo = window.innerWidth;
+  const alturaDispositivo = window.innerHeight;
+
+  // Calcula o fator de escala mantendo a proporção 800x600
+  const escala = Math.min(larguraDispositivo / 800, alturaDispositivo / 600);
+
+  const telas = document.querySelectorAll('.tela');
+  telas.forEach(tela => {
+    tela.style.transform = `scale(${escala})`;
+  });
+}
+
+// Executa o ajuste no carregamento e ao girar a tela do celular
+window.addEventListener('resize', ajustarEscalaJogo);
+window.addEventListener('orientationchange', ajustarEscalaJogo);
+window.addEventListener('DOMContentLoaded', ajustarEscalaJogo);
+ajustarEscalaJogo();
