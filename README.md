@@ -2,7 +2,7 @@
 
 > **Jogo educativo digital que integra o ensino da Matemática (Adição de Frações) aos princípios da Computação na Educação Básica.**
 
-🎮 **[CLIQUE AQUI PARA JOGAR A VERSSÃO FINAL](https://www.google.com/search?q=https://SEU_USUARIO.github.io/ponte-das-fracoes/)** *(substitua pelo seu link do GitHub Pages)*
+🎮 **[CLIQUE AQUI PARA JOGAR A VERSSÃO FINAL](https://gthiago03.github.io/ponte-das-fracoes/)**
 
 ---
 
@@ -33,30 +33,14 @@ O jogador assume o papel de um **Príncipe** em uma jornada para resgatar a **Pr
 
 ## 💻 Mapeamento de Habilidades — BNCC Computação
 
-O jogo foi planejado e codificado alinhado à norma da **BNCC Computação** (Complemento à BNCC - Resolução CNE/CEB nº 2/2022), abordando o eixo do **Pensamento Computacional**:
+O jogo **Ponte das Frações** foi estruturado para desenvolver as habilidades do eixo **Pensamento Computacional** nos estudantes do **Ensino Fundamental (5º ao 7º ano)**, conforme a norma da **BNCC Computação (Anexo ao Parecer CNE/CEB nº 2/2022)**:
 
-| Código BNCC Computação | Descrição da Habilidade | Aplicação Prática no Jogo |
-| --- | --- | --- |
-| **(EF05CO01)** | Criar e testar algoritmos para solucionar problemas passo a passo.
-
- | O jogador precisa criar uma sequência ordenada de seleção de blocos fracionários para reconstruir o vão da ponte e testar sua hipótese.
-
- |
-| **(EF06CO01)** | Decompor problemas complexos em partes menores e identificar padrões.
-
- | O objetivo geral (salvar a princesa) é decomposto em 10 fases. O jogador identifica o padrão de manter denominadores iguais ou calcular o MMC.
-
- |
-| **(EF06CO02)** | Testar e depurar (*debugging*) soluções, identificando erros e promovendo correções.
-
- | Se a ponte construída for maior ou menor que o alvo, a validação falha (erro). O jogador deve analisar a diferença, depurar a lógica e selecionar uma nova combinação.
-
- |
-| **(EF07CO01)** | Utilizar lógica, variáveis e estruturas condicionais na simulação de algoritmos e jogos.
-
- | Manipulação das variáveis de estado do jogo (`Tamanho_Ponte`, `VaoDoAbismo`, `Vidas`, `Pontuação`) através de estruturas condicionais (`se/senão`).
-
- |
+| Código | Habilidade BNCC Computação | Como o Estudante Desenvolve ao Jogar |
+| :--- | :--- | :--- |
+| **(EF05CO01)** | Criar, testar e executar algoritmos para solucionar problemas passo a passo. | O estudante formula e testa uma sequência lógica de passos (seleção e combinação de blocos de frações) para fechar o vão do abismo. |
+| **(EF06CO01)** | Decompor problemas complexos em partes menores e identificar padrões operacionais. | O estudante decompõe o objetivo principal (salvar a princesa) em 10 fases ordenadas e reconhece o padrão de cálculo (denominadores iguais vs. MMC com denominadores diferentes). |
+| **(EF06CO02)** | Testar, analisar e depurar (*debugging*) soluções, identificando erros e realizando correções. | Quando a ponte fica mais curta ou mais longa que o abismo, o estudante analisa a diferença (erro), ajusta o raciocínio matemático (depuração) e realiza uma nova tentativa. |
+| **(EF07CO01)** | Simular e analisar o comportamento de soluções e modelos lógicos na resolução de problemas. | O estudante avalia as variáveis em tela (fração-alvo, opções de blocos, vidas e pontuação) e projeta mentalmente a combinação correta antes de validar a travessia. |
 
 ---
 
