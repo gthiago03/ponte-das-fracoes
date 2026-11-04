@@ -1,0 +1,472 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0d0e15;
+  color: #fff;
+}
+
+/* CONTAINER DA TELA FIXA 800x600 px (PROPORÇÃO 4:3) */
+.tela {
+  display: none;
+  width: 800px;
+  height: 600px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border: 4px solid #ffffff33;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.85);
+}
+
+.tela.ativa {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px;
+}
+
+/* CENÁRIOS DE FUNDO */
+#tela-menu { 
+  background-image: url('assets/imagens/cenario_menu.png');
+  background-color: #2c3e50;
+  justify-content: flex-end;
+  padding-bottom: 180px;
+}
+
+#tela-tutorial { 
+  background-image: url('assets/imagens/cenario_tutorial.png');
+  background-color: #34495e;
+}
+
+#tela-gameplay.fase-iguais { 
+  background-image: url('assets/imagens/cenario_fase_iguais.png');
+  background-color: #27ae60;
+}
+
+#tela-gameplay.fase-diferentes { 
+  background-image: url('assets/imagens/cenario_fase_dif.png');
+  background-color: #8e44ad;
+}
+
+#tela-vitoria { 
+  background-image: url('assets/imagens/cenario_vitoria.png');
+  background-color: #f39c12;
+  display: none;
+}
+
+/* TELA DE VITÓRIA: TEXTO POSICIONADO MAIS À ESQUERDA */
+#tela-vitoria.ativa {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 20px;
+}
+
+.painel-vitoria-esquerda {
+  background: transparent;
+  padding: 20px 0;
+  text-align: left;
+  width: 420px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.8);
+  z-index: 10;
+  margin-top: 80px;
+}
+
+.painel-vitoria-esquerda h1 {
+  color: #f1c40f;
+  font-size: 38px;
+  margin-bottom: 15px;
+}
+
+.painel-vitoria-esquerda p {
+  font-size: 19px;
+  line-height: 1.4;
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.painel-vitoria-esquerda h3 {
+  font-size: 26px;
+  color: #38bdf8;
+  margin-bottom: 30px;
+}
+
+/* BOTÃO AZUL CLARO COM CONTORNO AZUL ESCURO DESTACADO */
+.btn-azul {
+  position: relative;
+  background-color: #38bdf8;
+  color: #ffffff;
+  border: 4px solid #1e3a8a;
+  padding: 14px 36px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #1e40af;
+  transition: transform 0.1s, background-color 0.2s;
+  z-index: 10;
+}
+
+.btn-menu-grande {
+  padding: 18px 52px !important;
+  font-size: 26px !important;
+  border-width: 5px !important;
+  border-radius: 36px !important;
+}
+
+.btn-azul:hover {
+  background-color: #0284c7;
+}
+
+.btn-azul:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #1e40af;
+}
+
+/* NOTIFICAÇÃO FLUTUANTE */
+#mensagem-jogo {
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 22px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  z-index: 100;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+#mensagem-jogo.mensagem-oculta {
+  opacity: 0;
+  transform: translate(-50%, -15px);
+}
+
+#mensagem-jogo.sucesso {
+  background-color: #16a34a;
+  color: #fff;
+  border: 2px solid #4ade80;
+}
+
+#mensagem-jogo.erro {
+  background-color: #dc2626;
+  color: #fff;
+  border: 2px solid #f87171;
+}
+
+#mensagem-jogo.alerta {
+  background-color: #ea580c;
+  color: #fff;
+  border: 2px solid #fb923c;
+}
+
+/* MODAL DE GAME OVER */
+#overlay-gameover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+#overlay-gameover.modal-oculto {
+  display: none;
+}
+
+.caixa-gameover {
+  background: #1e293b;
+  border: 3px solid #ef4444;
+  padding: 35px 40px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 450px;
+}
+
+.caixa-gameover h2 {
+  color: #ef4444;
+  font-size: 34px;
+  margin-bottom: 15px;
+}
+
+/* TUTORIAL DIDÁTICO */
+.conteudo-tutorial {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 10px;
+}
+
+#avatar-principe-tuto {
+  position: absolute;
+  bottom: -10px;
+  left: 10px;
+  height: 360px;
+  object-fit: contain;
+}
+
+.balao-fala {
+  background: rgba(255, 255, 255, 0.96);
+  color: #1e293b;
+  padding: 18px 24px;
+  border-radius: 18px;
+  font-size: 15px;
+  line-height: 1.5;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  width: 88%;
+  max-width: 650px;
+  text-align: center;
+  position: relative;
+  border: 3px solid #cbd5e1;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.balao-fala::after {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: 25%;
+  transform: translateX(-50%);
+  border-width: 14px 14px 0;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.96) transparent;
+  display: block;
+  width: 0;
+}
+
+.controles-fala-tutorial {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 5px;
+}
+
+.btn-nav-tuto {
+  background: #0284c7;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-nav-tuto:hover {
+  background: #0369a1;
+}
+
+#indicador-passo-tuto {
+  font-size: 13px;
+  font-weight: bold;
+  color: #64748b;
+}
+
+#btn-pular-tuto {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+}
+
+/* HUD SUPERIOR */
+#hud {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.88);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+#txt-vidas {
+  letter-spacing: 2px;
+}
+
+/* ÁREA CENTRAL DO ABISMO E PERSONAGENS */
+#area-jogo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  height: 220px;
+  padding: 0 30px 10px 30px;
+  position: relative;
+}
+
+#cartao-alvo {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f59e0b;
+  color: #1e293b;
+  border: 4px solid #b45309;
+  padding: 8px 24px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+
+.rotulo-alvo {
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+#valor-alvo {
+  font-size: 32px;
+}
+
+/* PRÍNCIPE */
+#img-principe {
+  height: 220px;
+  position: relative;
+  left: -15px;
+  bottom: 0px;
+  transition: transform 1.2s ease-in-out;
+  z-index: 5;
+}
+
+/* REGRA BASE DO ALVO DIREITO */
+#img-alvo-direito {
+  position: relative;
+  right: -5px;
+  z-index: 5;
+}
+
+/* ESPECIFICAÇÃO DA BANDEIRA (FASES 1 A 9 - PEQUENA) */
+#img-alvo-direito.elemento-bandeira {
+  height: 80px;
+  bottom: 2px;
+}
+
+/* ESPECIFICAÇÃO DA PRINCESA (FASE 10 - TAMANHO DO PRÍNCIPE) */
+#img-alvo-direito.elemento-princesa {
+  height: 220px; /* Mesmo tamanho do Príncipe (220px) */
+  bottom: 0px;
+}
+
+/* =========================================================
+   [AJUSTE MANUAL DA BARRA DA PONTE]
+   Altere a largura (width), altura (height) e a posição vertical (margin) abaixo:
+   ========================================================= */
+#painel-ponte-visual {
+  width: 320px;                  /* LARGURA DA BARRA */
+  margin: -90px auto 15px auto;  /* POSIÇÃO VERTICAL */
+  padding: 4px;
+}
+
+#trilho-abismo {
+  position: relative;
+  width: 100%;
+  height: 35px;                  /* <--- ESPESSURA DA BARRA AUMENTADA (Ajuste manual aqui) */
+  background: transparent;
+  border: none;
+  overflow: visible;
+}
+
+#barra-ponte-preenchimento {
+  height: 100%;
+  width: 0%;
+  background: #4a230b;           /* <--- MARROM MAIS ESCURO (Ajuste manual aqui) */
+  border-radius: 6px;
+  transition: width 0.35s ease-in-out;
+}
+
+/* GRADE DE BLOCOS DE FRAÇÃO */
+#grade-blocos {
+  display: flex;
+  gap: 12px;
+}
+
+.bloco-fracao {
+  background: #d97706;
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #b45309;
+  transition: transform 0.1s, background-color 0.2s;
+}
+
+.bloco-fracao:hover:not(.selecionado) {
+  background: #b45309;
+}
+
+.bloco-fracao.selecionado {
+  background: #78350f;
+  box-shadow: 0 2px 0 #451a03;
+  transform: translateY(3px);
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+/* BOTÕES DE AÇÃO */
+#controles-jogo {
+  display: flex;
+  gap: 18px;
+}
+
+.btn-acao {
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.btn-limpar {
+  background: #dc2626;
+  box-shadow: 0 4px 0 #991b1b;
+}
+
+.btn-testar {
+  background: #16a34a;
+  box-shadow: 0 4px 0 #15803d;
+}
+
+.btn-acao:active {
+  transform: translateY(2px);
+}

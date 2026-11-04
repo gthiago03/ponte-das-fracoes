@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ponte das Frações</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TELA 1: MENU INICIAL -->
+  <div id="tela-menu" class="tela ativa">
+    <button id="btn-iniciar-menu" class="btn-azul btn-menu-grande" onclick="irParaTela('tela-tutorial')">INICIAR</button>
+  </div>
+
+  <!-- TELA 2: TUTORIAL COMPLETO E DIDÁTICO -->
+  <div id="tela-tutorial" class="tela">
+    <div class="conteudo-tutorial">
+      <div class="balao-fala">
+        <p id="texto-tutorial">Carregando tutorial...</p>
+        
+        <!-- CONTROLES PARA AVANÇAR E VOLTAR AS FALAS DO TUTORIAL -->
+        <div class="controles-fala-tutorial">
+          <button id="btn-tuto-anterior" class="btn-nav-tuto" onclick="voltarTutorial(event)">◄ Anterior</button>
+          <span id="indicador-passo-tuto">1/7</span>
+          <button id="btn-tuto-proximo" class="btn-nav-tuto" onclick="avancarTutorial(event)">Próximo ►</button>
+        </div>
+      </div>
+      <img id="avatar-principe-tuto" src="assets/imagens/principe.png" alt="Príncipe">
+    </div>
+    <button id="btn-pular-tuto" class="btn-azul" onclick="iniciarJogo(event)">VAMOS JOGAR</button>
+  </div>
+
+  <!-- TELA 3: GAMEPLAY (FASES 1 A 10) -->
+  <div id="tela-gameplay" class="tela">
+    <!-- HUD SUPERIOR COM VIDAS NO CENTRO -->
+    <div id="hud">
+      <span id="txt-fase">Fase: 1/10</span>
+      <span id="txt-vidas">❤️ ❤️ ❤️</span>
+      <span id="txt-pontos">Pontos: 0</span>
+    </div>
+
+    <!-- BANNER DE NOTIFICAÇÃO -->
+    <div id="mensagem-jogo" class="mensagem-oculta"></div>
+
+    <!-- ÁREA CENTRAL DO ABISMO E PERSONAGENS -->
+    <div id="area-jogo">
+      <!-- CARTÃO ALVO ELEVADO -->
+      <div id="cartao-alvo">
+        <span class="rotulo-alvo">ALVO DO ABISMO</span>
+        <h2 id="valor-alvo">3/4</h2>
+      </div>
+
+      <img id="img-principe" src="assets/imagens/principe.png" alt="Príncipe">
+      <img id="img-alvo-direito" src="assets/imagens/bandeira.png" alt="Alvo">
+    </div>
+
+    <!-- BARRA VISUAL DA PONTE -->
+    <div id="painel-ponte-visual">
+      <div id="trilho-abismo">
+        <div id="barra-ponte-preenchimento"></div>
+      </div>
+    </div>
+
+    <!-- GRADE DOS 5 BLOCOS DE FRAÇÃO -->
+    <div id="grade-blocos">
+      <!-- Gerados dinamicamente via JS -->
+    </div>
+
+    <!-- BOTÕES DE AÇÃO -->
+    <div id="controles-jogo">
+      <button class="btn-acao btn-limpar" onclick="limparSelecao()">LIMPAR (-2 PTS)</button>
+      <button class="btn-acao btn-testar" onclick="testarPonte()">TESTAR PONTE</button>
+    </div>
+  </div>
+
+  <!-- OVERLAY DE GAME OVER -->
+  <div id="overlay-gameover" class="modal-oculto">
+    <div class="caixa-gameover">
+      <h2>💥 FIM DE JOGO</h2>
+      <p>Você perdeu todas as vidas! O Príncipe não conseguiu atravessar o abismo.<br><br></p>
+      <button class="btn-azul" onclick="reiniciarParaMenu()">VOLTAR AO MENU INICIAL</button>
+    </div>
+  </div>
+
+  <!-- TELA 4: VITÓRIA FINAL -->
+  <div id="tela-vitoria" class="tela">
+    <div class="painel-vitoria-esquerda">
+      <h1>🏆 VOCÊ VENCEU!</h1>
+      <p>O Príncipe atravessou todas as 10 pontes e salvou a Princesa!</p>
+      <h3 id="pontuacao-final">Pontuação Final: 100 PTS</h3>
+      <button class="btn-azul" onclick="irParaTela('tela-menu')">JOGAR NOVAMENTE</button>
+    </div>
+  </div>
+
+  <!-- EFEITOS SONOROS E MÚSICA (MÚSICA DO JOGO COM LOOP / VITÓRIA SEM LOOP) -->
+  <audio id="som_gameplay" src="assets/sons/som_gameplay.mp3" loop preload="none"></audio>
+  <audio id="som_vitoria" src="assets/sons/som_vitoria.mp3" preload="none"></audio>
+  <audio id="som-vitoria" src="assets/sons/vitoria.mp3" preload="none"></audio>
+  <audio id="som-erro" src="assets/sons/erro.mp3" preload="none"></audio>
+  <audio id="som-clique" src="assets/sons/clique.mp3" preload="none"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
