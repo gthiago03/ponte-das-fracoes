@@ -7,21 +7,19 @@
 
 /* Atualize o início do arquivo style.css com estas regras: */
 html, body {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden; /* Impede barras de rolagem no celular */
-  touch-action: manipulation; /* Evita zooms acidentais no toque */
-}
-
-body {
+  width: 800px;
+  height: 600px;
+  min-width: 800px;
+  min-height: 600px;
+  margin: 0 auto;
+  padding: 0;
+  background-color: #0d0e15;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0d0e15;
-  color: #fff;
 }
 
-/* Adicione flex-shrink e transform-origin na regra da .tela */
 .tela {
   display: none;
   width: 800px;
@@ -34,9 +32,7 @@ body {
   overflow: hidden;
   box-shadow: 0 12px 35px rgba(0,0,0,0.85);
   flex-shrink: 0;
-  transform-origin: center center; /* Garante que a escala mantenha o centro */
 }
-
 .tela.ativa {
   display: flex;
   flex-direction: column;
