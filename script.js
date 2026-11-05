@@ -459,21 +459,21 @@ function atualizarHUD() {
   if (txtPontos) txtPontos.innerText = `Pontos: ${pontos}`;
 }
 
-// AJUSTE AUTOMÁTICO DE ESCALA PARA DISPOSITIVOS MÓVEIS
+// REDIMENSIONAMENTO E CENTRALIZAÇÃO AUTOMÁTICA PARA MOBILE E DESKTOP
 function ajustarEscalaJogo() {
   const larguraDispositivo = window.innerWidth;
   const alturaDispositivo = window.innerHeight;
 
-  // Calcula o fator de escala mantendo a proporção 800x600
-  const escala = Math.min(larguraDispositivo / 800, alturaDispositivo / 600);
+  // Calcula a escala para caber na tela mantendo uma pequena margem (95%)
+  const escala = Math.min((larguraDispositivo * 0.95) / 800, (alturaDispositivo * 0.95) / 600);
 
   const telas = document.querySelectorAll('.tela');
   telas.forEach(tela => {
-    tela.style.transform = `scale(${escala})`;
+    tela.style.transform = `translate(-50%, -50%) scale(${escala})`;
   });
 }
 
-// Executa o ajuste no carregamento e ao girar a tela do celular
+// Executa o ajuste dinamicamente ao redimensionar ou girar o celular
 window.addEventListener('resize', ajustarEscalaJogo);
 window.addEventListener('orientationchange', ajustarEscalaJogo);
 window.addEventListener('DOMContentLoaded', ajustarEscalaJogo);
