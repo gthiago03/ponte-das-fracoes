@@ -35,12 +35,12 @@ O jogador assume o papel de um **Príncipe** em uma jornada para resgatar a **Pr
 
 O jogo **Ponte das Frações** foi estruturado para desenvolver as habilidades do eixo **Pensamento Computacional** nos estudantes do **Ensino Fundamental (5º ao 7º ano)**, conforme a norma da **BNCC Computação (Anexo ao Parecer CNE/CEB nº 2/2022)**:
 
-| Código | Habilidade BNCC Computação | Como o Estudante Desenvolve ao Jogar |
+| BNCC Computação | Descrição | Aplicação no Jogo |
 | :--- | :--- | :--- |
-| **(EF05CO01)** | Criar, testar e executar algoritmos para solucionar problemas passo a passo. | O estudante formula e testa uma sequência lógica de passos (seleção e combinação de blocos de frações) para fechar o vão do abismo. |
-| **(EF06CO01)** | Decompor problemas complexos em partes menores e identificar padrões operacionais. | O estudante decompõe o objetivo principal (salvar a princesa) em 10 fases ordenadas e reconhece o padrão de cálculo (denominadores iguais vs. MMC com denominadores diferentes). |
-| **(EF06CO02)** | Testar, analisar e depurar (*debugging*) soluções, identificando erros e realizando correções. | Quando a ponte fica mais curta ou mais longa que o abismo, o estudante analisa a diferença (erro), ajusta o raciocínio matemático (depuração) e realiza uma nova tentativa. |
-| **(EF07CO01)** | Simular e analisar o comportamento de soluções e modelos lógicos na resolução de problemas. | O estudante avalia as variáveis em tela (fração-alvo, opções de blocos, vidas e pontuação) e projeta mentalmente a combinação correta antes de validar a travessia. |
+| **(EF15CO02)** | Construir e simular algoritmos, de forma independente ou em colaboração, que resolvam problemas simples e do cotidiano com uso de sequências, seleções condicionais e repetições de instruções. | O estudante analisa e executa a sequência de passos necessária para selecionar os blocos de fração e atender às seleções condicionais do abismo. |
+| **(EF15CO04)** | Aplicar a estratégia de decomposição para resolver problemas complexos, dividindo esse problema em partes menores, resolvendo-as e combinando suas soluções. | O desafio de cobrir o abismo é decomposto em partes menores (analisar a fração-alvo, escolher blocos fracionários menores e somá-los para compor a solução total). |
+| **(EF69CO02)** | Elaborar algoritmos que envolvam instruções sequenciais, de repetição e de seleção usando uma linguagem de programação. | O estudante interage com o algoritmo do jogo, testando seleções e sequências condicionais de adição de frações a cada rodada. |
+| **(EF69CO06)** | Comparar diferentes casos particulares (instâncias) de um mesmo problema, identificando as semelhanças e diferenças entre eles, e criar um algoritmo para resolver todos, fazendo uso de variáveis (parâmetros) para permitir o tratamento de todos os casos de forma genérica. | O estudante compara fases com denominadores iguais (fases 1 a 6) e diferentes (fases 7 a 10), identificando semelhanças e diferenças para aplicar a estratégia de cálculo adequada. |
 
 ---
 
