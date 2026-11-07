@@ -4,9 +4,12 @@ let vidas = 3;
 let pontos = 0;
 let ultimoDenominador = 0;
 
+// SELEÇÃO DE PERSONAGEM
+let personagemEscolhido = 'principe'; // 'principe' ou 'princesa'
+
 // TUTORIAL DIDÁTICO EXPANDIDO COM PASSO A PASSO DO MMC E EXEMPLOS
 let passoTutorial = 0;
-const falasTutorial = [
+let falasTutorial = [
   "Olá! Preciso da sua ajuda para construir 10 pontes sobre os abismos e resgatar a Princesa!",
   "COMO FUNCIONA O JOGO: Observe a fração Alvo do Abismo e escolha os blocos de fração que, ao serem somados, preenchem o vão exatamente no tamanho correto.",
   "DENOMINADORES IGUAIS (Fases 1 a 6): Como as partes têm o mesmo tamanho, mantemos o número de baixo (denominador) e somamos apenas os de cima (numeradores)! Exemplo: 1/5 + 2/5 = 3/5.",
@@ -23,7 +26,24 @@ let somaDen = 0;
 let blocosAtuais = [];
 let animandoPrincipe = false;
 
-// SOM SEGURO (MÚSICA DO JOGO COM LOOP E VITÓRIA SEM LOOP)
+// SELEÇÃO DE PERSONAGEM
+function selecionarPersonagem(tipo) {
+  tocarSom('clique');
+  personagemEscolhido = tipo;
+
+  const resgatadoTexto = personagemEscolhido === 'principe' ? 'a Princesa' : 'o Príncipe';
+  falasTutorial[0] = `Olá! Preciso da sua ajuda para construir 10 pontes sobre os abismos e resgatar ${resgatadoTexto}!`;
+
+  const avatarTuto = document.getElementById('avatar-principe-tuto');
+  if (avatarTuto) avatarTuto.src = `assets/imagens/${personagemEscolhido}.png`;
+
+  const imgJogador = document.getElementById('img-principe');
+  if (imgJogador) imgJogador.src = `assets/imagens/${personagemEscolhido}.png`;
+
+  irParaTela('tela-tutorial');
+}
+
+// SOM SEGURO
 function tocarSom(tipo) {
   try {
     const el = document.getElementById(`som-${tipo}`);
@@ -43,7 +63,7 @@ function atualizarBGM(idSomAtivo) {
     if (idSomAtivo === 'som_gameplay') {
       if (bgmVitoria) { bgmVitoria.pause(); bgmVitoria.currentTime = 0; }
       if (bgmGameplay) {
-        bgmGameplay.loop = true; // MÚSICA DO JOGO COM LOOP
+        bgmGameplay.loop = true;
         if (bgmGameplay.paused) {
           bgmGameplay.currentTime = 0;
           bgmGameplay.play().catch(() => {});
@@ -52,7 +72,7 @@ function atualizarBGM(idSomAtivo) {
     } else if (idSomAtivo === 'som_vitoria') {
       if (bgmGameplay) { bgmGameplay.pause(); bgmGameplay.currentTime = 0; }
       if (bgmVitoria) {
-        bgmVitoria.loop = false; // MÚSICA DE VITÓRIA SEM LOOP (TOCA APENAS UMA VEZ)
+        bgmVitoria.loop = false;
         if (bgmVitoria.paused) {
           bgmVitoria.currentTime = 0;
           bgmVitoria.play().catch(() => {});
@@ -96,7 +116,7 @@ function irParaTela(idTela) {
     telaAlvo.classList.add('ativa');
   }
 
-  if (idTela === 'tela-menu' || idTela === 'tela-tutorial') {
+  if (idTela === 'tela-menu' || idTela === 'tela-personagem' || idTela === 'tela-tutorial') {
     atualizarBGM('som_gameplay');
   } else if (idTela === 'tela-vitoria') {
     atualizarBGM('som_vitoria');
@@ -200,7 +220,10 @@ function carregarFase() {
   atualizarHUD();
 
   const imgPrincipe = document.getElementById('img-principe');
-  if (imgPrincipe) imgPrincipe.style.transform = 'translateX(0px)';
+  if (imgPrincipe) {
+    imgPrincipe.src = `assets/imagens/${personagemEscolhido}.png`;
+    imgPrincipe.style.transform = 'translateX(0px)';
+  }
 
   const imgAlvoDireito = document.getElementById('img-alvo-direito');
   const telaGameplay = document.getElementById('tela-gameplay');
@@ -209,11 +232,12 @@ function carregarFase() {
     if (fase < 10) {
       imgAlvoDireito.src = 'assets/imagens/bandeira.png';
       imgAlvoDireito.alt = 'Bandeira';
-      imgAlvoDireito.className = 'elemento-bandeira'; // Bandeira pequena
+      imgAlvoDireito.className = 'elemento-bandeira';
     } else {
-      imgAlvoDireito.src = 'assets/imagens/princesa.png';
-      imgAlvoDireito.alt = 'Princesa';
-      imgAlvoDireito.className = 'elemento-princesa'; // Princesa do tamanho do Príncipe
+      const imgResgatado = personagemEscolhido === 'principe' ? 'princesa.png' : 'principe.png';
+      imgAlvoDireito.src = `assets/imagens/${imgResgatado}`;
+      imgAlvoDireito.alt = personagemEscolhido === 'principe' ? 'Princesa' : 'Príncipe';
+      imgAlvoDireito.className = 'elemento-princesa';
     }
   }
 
@@ -344,7 +368,7 @@ function selecionarBloco(btn, num, den) {
   atualizarBarraPonteVisual();
 }
 
-// ATUALIZAÇÃO DA BARRA DA PONTE (CRESCE INDEFINIDAMENTE CONFORME CLIQUES)
+// ATUALIZAÇÃO DA BARRA DA PONTE
 function atualizarBarraPonteVisual() {
   const barraPreenchimento = document.getElementById('barra-ponte-preenchimento');
   if (!barraPreenchimento) return;
@@ -412,6 +436,14 @@ function testarPonte() {
         setTimeout(() => {
           const pFinal = document.getElementById('pontuacao-final');
           if (pFinal) pFinal.innerText = `Pontuação Final: ${pontos} PTS`;
+
+          const txtVit = document.getElementById('txt-vitoria-resumo');
+          if (txtVit) {
+            const nomeHeroi = personagemEscolhido === 'principe' ? 'O Príncipe' : 'A Princesa';
+            const nomeResgatado = personagemEscolhido === 'principe' ? 'a Princesa' : 'o Príncipe';
+            txtVit.innerText = `${nomeHeroi} atravessou todas as 10 pontes e salvou ${nomeResgatado}!`;
+          }
+
           irParaTela('tela-vitoria');
         }, 1000);
       }
@@ -425,6 +457,10 @@ function testarPonte() {
 
     if (vidas <= 0) {
       mostrarMensagemJogo("Suas vidas acabaram!", "erro", 2000);
+      const txtGameOver = document.getElementById('txt-gameover');
+      const nomeHeroi = personagemEscolhido === 'principe' ? 'O Príncipe' : 'A Princesa';
+      if (txtGameOver) txtGameOver.innerHTML = `Você perdeu todas as vidas! ${nomeHeroi} não conseguiu atravessar o abismo.<br><br>`;
+
       setTimeout(() => {
         const overlayOver = document.getElementById('overlay-gameover');
         if (overlayOver) overlayOver.className = '';
@@ -459,12 +495,11 @@ function atualizarHUD() {
   if (txtPontos) txtPontos.innerText = `Pontos: ${pontos}`;
 }
 
-// REDIMENSIONAMENTO E CENTRALIZAÇÃO AUTOMÁTICA PARA MOBILE E DESKTOP
+// REDIMENSIONAMENTO E CENTRALIZAÇÃO AUTOMÁTICA
 function ajustarEscalaJogo() {
   const larguraDispositivo = window.innerWidth;
   const alturaDispositivo = window.innerHeight;
 
-  // Calcula a escala para caber na tela mantendo uma pequena margem (95%)
   const escala = Math.min((larguraDispositivo * 0.95) / 800, (alturaDispositivo * 0.95) / 600);
 
   const telas = document.querySelectorAll('.tela');
@@ -473,7 +508,6 @@ function ajustarEscalaJogo() {
   });
 }
 
-// Executa o ajuste dinamicamente ao redimensionar ou girar o celular
 window.addEventListener('resize', ajustarEscalaJogo);
 window.addEventListener('orientationchange', ajustarEscalaJogo);
 window.addEventListener('DOMContentLoaded', ajustarEscalaJogo);

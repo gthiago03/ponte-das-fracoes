@@ -5,20 +5,18 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Atualize o início do arquivo style.css com estas regras: */
 html, body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Impede qualquer barra de rolagem no celular */
+  overflow: hidden;
   background-color: #0d0e15;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Ajuste na classe .tela para centralização absoluta */
 .tela {
   display: none;
   width: 800px;
@@ -26,7 +24,7 @@ html, body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Garante o centro exato da tela */
+  transform: translate(-50%, -50%);
   transform-origin: center center;
   background-size: cover;
   background-position: center;
@@ -53,6 +51,58 @@ html, body {
   padding-bottom: 180px;
 }
 
+#tela-personagem {
+  background-image: url('assets/imagens/cenario_tutorial.png');
+  background-color: #2c3e50;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+.titulo-personagem {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: bold;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.8);
+}
+
+.container-personagens {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartao-personagem {
+  background: rgba(15, 23, 42, 0.85);
+  border: 3px solid #38bdf8;
+  border-radius: 16px;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+.cartao-personagem:hover {
+  transform: translateY(-5px) scale(1.03);
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 12px 25px rgba(56, 189, 248, 0.4);
+}
+
+.cartao-personagem img {
+  height: 180px;
+  object-fit: contain;
+}
+
+.btn-selecionar {
+  padding: 10px 24px !important;
+  font-size: 16px !important;
+}
+
 #tela-tutorial { 
   background-image: url('assets/imagens/cenario_tutorial.png');
   background-color: #34495e;
@@ -74,7 +124,6 @@ html, body {
   display: none;
 }
 
-/* TELA DE VITÓRIA: TEXTO POSICIONADO MAIS À ESQUERDA */
 #tela-vitoria.ativa {
   display: flex;
   justify-content: center;
@@ -112,7 +161,7 @@ html, body {
   margin-bottom: 30px;
 }
 
-/* BOTÃO AZUL CLARO COM CONTORNO AZUL ESCURO DESTACADO */
+/* BOTÃO AZUL CLARO */
 .btn-azul {
   position: relative;
   background-color: #38bdf8;
@@ -362,7 +411,7 @@ html, body {
   font-size: 32px;
 }
 
-/* PRÍNCIPE */
+/* JOGADOR */
 #img-principe {
   height: 220px;
   position: relative;
@@ -379,32 +428,29 @@ html, body {
   z-index: 5;
 }
 
-/* ESPECIFICAÇÃO DA BANDEIRA (FASES 1 A 9 - PEQUENA) */
+/* BANDEIRA (FASES 1 A 9) */
 #img-alvo-direito.elemento-bandeira {
   height: 80px;
   bottom: 2px;
 }
 
-/* ESPECIFICAÇÃO DA PRINCESA (FASE 10 - TAMANHO DO PRÍNCIPE) */
+/* PERSONAGEM RESGATADO (FASE 10) */
 #img-alvo-direito.elemento-princesa {
-  height: 220px; /* Mesmo tamanho do Príncipe (220px) */
+  height: 220px;
   bottom: 0px;
 }
 
-/* =========================================================
-   [AJUSTE MANUAL DA BARRA DA PONTE]
-   Altere a largura (width), altura (height) e a posição vertical (margin) abaixo:
-   ========================================================= */
+/* BARRA DA PONTE */
 #painel-ponte-visual {
-  width: 320px;                  /* LARGURA DA BARRA */
-  margin: -90px auto 15px auto;  /* POSIÇÃO VERTICAL */
+  width: 320px;
+  margin: -90px auto 15px auto;
   padding: 4px;
 }
 
 #trilho-abismo {
   position: relative;
   width: 100%;
-  height: 35px;                  /* <--- ESPESSURA DA BARRA AUMENTADA (Ajuste manual aqui) */
+  height: 35px;
   background: transparent;
   border: none;
   overflow: visible;
@@ -413,7 +459,7 @@ html, body {
 #barra-ponte-preenchimento {
   height: 100%;
   width: 0%;
-  background: #4a230b;           /* <--- MARROM MAIS ESCURO (Ajuste manual aqui) */
+  background: #4a230b;
   border-radius: 6px;
   transition: width 0.35s ease-in-out;
 }
