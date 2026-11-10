@@ -10,7 +10,7 @@
 
 O **Ponte das Frações** é um jogo educativo interativo em estética *16-bits* desenvolvido para transformar a aprendizagem abstrata da matemática em um desafio prático e envolvente.
 
-O jogador assume o papel de um **Príncipe** em uma jornada para resgatar a **Princesa** no topo da montanha. Ao longo do caminho, há **10 pontes destruídas** sobre abismos. Para reconstruir cada ponte e avançar, o estudante deve selecionar e somar blocos de frações até atingir exatamente o tamanho do vão do abismo (a fração-alvo).
+O jogador assume o papel de um **Príncipe** ou uma **Princesa** em uma jornada de resgate até o topo da montanha. Ao longo do caminho, há **10 pontes destruídas** sobre abismos. Para reconstruir cada ponte e avançar, o estudante deve selecionar e somar blocos de frações até atingir exatamente o tamanho do vão do abismo (a fração-alvo).
 
 ---
 
